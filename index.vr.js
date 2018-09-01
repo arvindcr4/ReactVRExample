@@ -3,6 +3,7 @@ import {
   AppRegistry,
   asset,
   View,
+  Pano,
   Sphere,
   Cylinder,
   AmbientLight, 
@@ -10,38 +11,25 @@ import {
 Model  
 } from 'react-vr';
 
-const Tree = props=>{
-  return (
-    <View style={props.style}>
-     <Sphere
-     lit
-     style={{color:'green',transform:[{translateY:0.8}]}}
-     />  
-     <Cylinder
-     lit
-     style={{color:'brown'}}
-     radiusBottom={0.05}
-     radiusTop={0.05}
-     />
-    </View>
-  )
-}
-
 export default class app extends React.Component {
   render() {
     return (
       <View>
-        <Tree style={{transform:[{translateZ:-3}]}}/>
-        <Tree style={{transform:[{translateZ:-3},{translateX:1.1}]}}/>
-        <DirectionalLight
-                style={{
-          transform:[{translateX:-1000}]
+      <Pano source={asset('chess-world.jpg')} />
+      <View
+        style={{
+          width: 2,
+          height: 2,
+          backgroundColor: '#FFF',
+          layoutOrigin: [0.5, 0.5],
+          transform: [{ translate: [0, 0, -3] }]
+          
         }}
-        distance={2}
-        decay={2}
-        />
-        <AmbientLight intensity={0.4}/>
+        onInput={(event)=>{console.log('type',event.nativeEvent.inputEvent.type);
+      console.log('eventType',event.nativeEvent.inputEvent.eventType);
+      }}      
         
+        /> 
         
         
 
