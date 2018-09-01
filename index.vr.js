@@ -4,6 +4,7 @@ import {
   asset,
   View,
   Sphere,
+  Cylinder,
   AmbientLight, 
   DirectionalLight,
 Model  
@@ -11,11 +12,17 @@ Model
 
 const Tree = props=>{
   return (
-    <View>
+    <View style={props.style}>
      <Sphere
      lit
-     style={{color:'green',transform:[{translateZ:-2}]}}
+     style={{color:'green',transform:[{translateY:0.8}]}}
      />  
+     <Cylinder
+     lit
+     style={{color:'brown'}}
+     radiusBottom={0.05}
+     radiusTop={0.05}
+     />
     </View>
   )
 }
@@ -24,7 +31,8 @@ export default class app extends React.Component {
   render() {
     return (
       <View>
-        <Tree/>
+        <Tree style={{transform:[{translateZ:-3}]}}/>
+        <Tree style={{transform:[{translateZ:-3},{translateX:1.1}]}}/>
         <DirectionalLight
                 style={{
           transform:[{translateX:-1000}]
