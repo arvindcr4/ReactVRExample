@@ -3,27 +3,28 @@ import {
   AppRegistry,
   asset,
   View,
+  Sphere,
   AmbientLight, 
   DirectionalLight,
 Model  
 } from 'react-vr';
 
+const Tree = props=>{
+  return (
+    <View>
+     <Sphere
+     lit
+     style={{color:'green',transform:[{translateZ:-2}]}}
+     />  
+    </View>
+  )
+}
+
 export default class app extends React.Component {
   render() {
     return (
       <View>
-        <Model
-        source={{obj:asset('astronaut.obj')
-        }}
-        style={{
-          color:'orange',
-          transform:[{translate:[0,-1,-2]}]
-        }}
-        lit
-        texture={asset('chess-world.jpg')}
-        />
-
-        
+        <Tree/>
         <DirectionalLight
                 style={{
           transform:[{translateX:-1000}]
