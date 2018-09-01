@@ -16,15 +16,15 @@ export default class app extends React.Component {
   render() {
     return (
       <View>
-        <Sphere
+        <Box
+        wireframe
+        dimWidth={0.5}
+        dimHeight={0.5}
+        dimDepth={0.5}
         style={{
           color:'lightblue',
           transform:[{translateZ:-2}]}}
-        lit
-        texture={asset('earth.jpg')}
-        heightSegments={20}
-        widthSegments={20}
-        radius={0.2}
+        
         />
         <PointLight
         intensity={1}
