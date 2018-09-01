@@ -20,9 +20,9 @@ export default class app extends React.Component {
     }
   }
   componentDidMount(){
-    Animated.spring(
-      this.state.springValue,
-      {toValue:0,tension:1,friction:2}
+    Animated.decay(
+      this.state.decayValue,
+      {velocity:0.01,deceleration:0.9985}
     ).start();
   }
   
@@ -33,7 +33,7 @@ export default class app extends React.Component {
       style={{
         opacity:this.state.fadeIn,
         layoutOrigin:[0.5,0.5],
-        transform:[{translate:[0,0,-1]}],
+        transform:[{translate:[0,this.state.decayValue,-1]}],
         height:0.5,
         width:0.5
       }}
@@ -45,7 +45,7 @@ export default class app extends React.Component {
       {translateZ:-1},
       {translateY:this.state.springValue}
     ],
-    height:0.5
+    height:0.5,
   }}
   />
 
