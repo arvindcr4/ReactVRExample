@@ -16,13 +16,13 @@ export default class app extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      springValue:new Animated.Value(-1),
+      decayValue:new Animated.Value(-3.5),
     }
   }
   componentDidMount(){
-    Animated.timing(
-      this.state.fadeIn,
-      {toValue:1,duration:3000,easing:(x)=>x}
+    Animated.spring(
+      this.state.springValue,
+      {toValue:0,tension:1,friction:2}
     ).start();
   }
   
@@ -41,7 +41,11 @@ export default class app extends React.Component {
       />
   <DirectionalLight
   style={{
-    transform:[{translate:[-200,700,0]}]
+    transform:[
+      {translateZ:-1},
+      {translateY:this.state.springValue}
+    ],
+    height:0.5
   }}
   />
 
