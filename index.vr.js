@@ -19,7 +19,7 @@ export default class app extends React.Component {
   render() {
     return (
       <View>
-        <PointLight
+        <SpotLight
                 style={{
           transform:[{translateZ:-5}]
         }}
