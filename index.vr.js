@@ -9,31 +9,41 @@ import {
   Cylinder,
   AmbientLight, 
   DirectionalLight,
-VrButton
+Animated
 } from 'react-vr';
 
 export default class app extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      springValue:new Animated.Value(-1),
+    }
+  }
+  componentDidMount(){
+    Animated.timing(
+      this.state.fadeIn,
+      {toValue:1,duration:3000,easing:(x)=>x}
+    ).start();
+  }
+  
   render() {
     return (
       <View>
-      <Pano source={asset('chess-world.jpg')} />
-      <VrButton
-      onClick={()=>{console.log('clicked')}}
-      onLongClick={()=>console.log('clicked long')}
-      onButtonPress={()=>{console.log('Pressed')}}
-      onButtonRelease={()=>{console.log('released')}}
+        <Animated.Image
       style={{
+        opacity:this.state.fadeIn,
         layoutOrigin:[0.5,0.5],
-        transform:[{translate:[0,0,-1]}]
+        transform:[{translate:[0,0,-1]}],
+        height:0.5,
+        width:0.5
       }}
-      >
-      <Text>Update</Text>
-
-      </VrButton>
-        
-         
-        
-        
+      source={asset('mountain.jpg')}
+      />
+  <DirectionalLight
+  style={{
+    transform:[{translate:[-200,700,0]}]
+  }}
+  />
 
       </View>
     );
