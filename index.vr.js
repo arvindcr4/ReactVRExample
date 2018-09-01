@@ -16,14 +16,13 @@ export default class app extends React.Component {
   render() {
     return (
       <View>
-        <Cylinder
+        <Plane
+        dimWidth={0.5}
+        dimHeight={0.5}
         wireframe
-        segments={20}
-        dimHeight={0.6}
         style={{
           transform:[{translateZ:-2}]}}
-          radiusBottom={0.35}
-          radiusTop={0}
+          
         />
         <PointLight
         intensity={1}
