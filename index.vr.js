@@ -4,11 +4,12 @@ import {
   asset,
   View,
   Pano,
+  Text,
   Sphere,
   Cylinder,
   AmbientLight, 
   DirectionalLight,
-Model  
+VrButton
 } from 'react-vr';
 
 export default class app extends React.Component {
@@ -16,20 +17,21 @@ export default class app extends React.Component {
     return (
       <View>
       <Pano source={asset('chess-world.jpg')} />
-      <View
-        style={{
-          width: 2,
-          height: 2,
-          backgroundColor: '#FFF',
-          layoutOrigin: [0.5, 0.5],
-          transform: [{ translate: [0, 0, -3] }]
-          
-        }}
-        onInput={(event)=>{console.log('type',event.nativeEvent.inputEvent.type);
-      console.log('eventType',event.nativeEvent.inputEvent.eventType);
-      }}      
+      <VrButton
+      onClick={()=>{console.log('clicked')}}
+      onLongClick={()=>console.log('clicked long')}
+      onButtonPress={()=>{console.log('Pressed')}}
+      onButtonRelease={()=>{console.log('released')}}
+      style={{
+        layoutOrigin:[0.5,0.5],
+        transform:[{translate:[0,0,-1]}]
+      }}
+      >
+      <Text>Update</Text>
+
+      </VrButton>
         
-        /> 
+         
         
         
 
