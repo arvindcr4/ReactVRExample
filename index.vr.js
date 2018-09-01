@@ -2,55 +2,38 @@ import React from 'react';
 import {
   AppRegistry,
   asset,
-  Pano,
-  Text,
   View,
-  PointLight, 
-  SpotLight, 
   AmbientLight, 
   DirectionalLight,
-  Sphere, 
-  Box, 
-  Cylinder,
-  Plane
+Model  
 } from 'react-vr';
 
 export default class app extends React.Component {
   render() {
     return (
       <View>
-        <SpotLight
+        <Model
+        source={{obj:asset('astronaut.obj')
+        }}
+        style={{
+          color:'orange',
+          transform:[{translate:[0,-1,-2]}]
+        }}
+        lit
+        texture={asset('chess-world.jpg')}
+        />
+
+        
+        <DirectionalLight
                 style={{
-          transform:[{translateZ:-5}]
+          transform:[{translateX:-1000}]
         }}
         distance={2}
         decay={2}
         />
-        <Sphere
-          lit
-          style={{
-            color: 'yellow',
-            transform: [{ translate: [-1.5, 0, -4] }]
-          }}
-          widthSegments={20}
-          heightSegments={20}
-        />
-        <Box
-          lit
-          style={{
-            color: 'blue',
-            transform: [{ translate: [0, 0, -6] }]
-          }}
-        />
-        <Cylinder
-          lit
-          radiusTop={0}
-          segments={20}
-          style={{
-            color: 'red',
-            transform: [{ translate: [1.5, 0, -4] }]
-          }}
-        />
+        <AmbientLight intensity={0.4}/>
+        
+        
         
 
       </View>
