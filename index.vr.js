@@ -6,6 +6,9 @@ import {
   Text,
   View,
   PointLight, 
+  SpotLight, 
+  AmbientLight, 
+  DirectionalLight,
   Sphere, 
   Box, 
   Cylinder,
@@ -16,20 +19,40 @@ export default class app extends React.Component {
   render() {
     return (
       <View>
-        <Plane
-        dimWidth={0.5}
-        dimHeight={0.5}
-        wireframe
-        style={{
-          transform:[{translateZ:-2}]}}
-          
-        />
         <PointLight
-        intensity={1}
-        style={{
-          transform:[{translate:[0,700,700]}]
+                style={{
+          transform:[{translateZ:-5}]
         }}
+        distance={2}
+        decay={2}
         />
+        <Sphere
+          lit
+          style={{
+            color: 'yellow',
+            transform: [{ translate: [-1.5, 0, -4] }]
+          }}
+          widthSegments={20}
+          heightSegments={20}
+        />
+        <Box
+          lit
+          style={{
+            color: 'blue',
+            transform: [{ translate: [0, 0, -6] }]
+          }}
+        />
+        <Cylinder
+          lit
+          radiusTop={0}
+          segments={20}
+          style={{
+            color: 'red',
+            transform: [{ translate: [1.5, 0, -4] }]
+          }}
+        />
+        
+
       </View>
     );
   }
